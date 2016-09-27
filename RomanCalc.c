@@ -40,27 +40,14 @@ int main(void)
 		simplifyb(input); // Simplify 
 		printf("%s\n", input);  // Print
 	}
-	else if (operationcheck == 0)
+	else if (operationcheck == 0)  // Subtracting
 	{
-		Subtexpand(input);
-		subcountera(input);
-		for (int a = 0; a < 7; a++)
-			{
-				printf("a: %d\n", subcounta[a]);
-			}
-		subcounterb(input);
-		for (int q = 0; q < 7; q++)
-			{
-				printf("b: %d\n", subcountb[q]);
-			}
-		RomSubtract(input);
-		simplifyb(input);
-		for (int q = 0; q < 7; q++)
-			{
-				printf("LASTCOUNT: %d\n", count[q]);
-			}
-		printf("%s\n", input);
-		
+		Subtexpand(input);  // Expand
+		subcountera(input); //Count before - sign
+		subcounterb(input); // Count after - sign
+		RomSubtract(input); // Subtract
+		simplifyb(input);  // Simplify
+		printf("%s\n", input); // Print
 	}
 	else if (operationcheck == 2) 
 	{
@@ -222,18 +209,16 @@ void RomSubtract(char *b)
 			
 	for (k = 6; k >= 0; k--) 
 	{
-		if ((count[k] < 0) && (count[k-1] <= 0))
+		if ((count[k] < 0) && (count[k-1] <= 0)) // Borrowing function
 		{
-			printf("k: %d\n",k);
 			while (count[k-d] <= 0 )
 			{
 				d++; 
 			}
 			for (int r = d; r >= 0; r--)
 			{
-				if (count[k] < 0)
+				if (count[k] < 0) // Convert next highest Roman numeral and add to negative counter
 				{
-					printf("lol\n");
 					if ((r == 0) || (r == 2) || (r == 4))	
 					{
 						borrow = 2;
@@ -244,19 +229,15 @@ void RomSubtract(char *b)
 					}
 					count[k-r]--;
 					count[k-r+1] = count[k-r+1] + borrow;
-				}
-				printf("R: %d\n", r);		
+				}	
 			}
-			
 		}
-		
-		else
+		else // No borrowing needed
 		{
 			for (int r = 0; r < d; r++)
 			{
 				if (count[k] < 0)
 				{
-					printf("YO k: %d\n",k);
 					count[k-1]--;
 					if ((k == 0) || (k == 2) || (k == 4) || (k==6))	
 					{
