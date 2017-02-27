@@ -152,7 +152,7 @@ void simplifyb(char *q)
 				j++;
 				count[i] = 0;
 			}
-			else if ((count[i+1] == 4) && ((i == 5) || (i == 3) || (i == 1)) && (count[i] == 1)) // Ex: VIIII -> IX
+			else if ((i+1 < 7) && (count[i+1] == 4) && ((i == 5) || (i == 3) || (i == 1)) && (count[i] == 1)) // Ex: VIIII -> IX
 			{
 				*(result+j) = *index[i+1];
 				j++;
