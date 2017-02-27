@@ -381,7 +381,7 @@ int counter(char *u) // Counts number of individual characters
 			}
 		}
 	}
-	return count[7];
+	return count[6];
 }
 
 int subcountera(char *f) // Counts number of individual characters before - sign
@@ -423,7 +423,7 @@ int subcountera(char *f) // Counts number of individual characters before - sign
 			}
 		}
 	}
-	return subcounta[7];
+	return subcounta[6];
 }
 
 
@@ -464,7 +464,7 @@ int subcounterb(char *f) // Counts number of individual characters before - sign
 		}
 	}
 
-	return subcountb[7];
+	return subcountb[6];
 }
 
 
